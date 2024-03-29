@@ -3,9 +3,6 @@
     <div class="col-12">
         <p class="mb-0">Copyright &copy; 2024 Clínica Dental Integral "Dr. José Alfredo García Oliveros"</p>
     </div>
-    <small>
-        <a href="login.php">Login</a>
-    </small>
 </div>
 </body>
 </html>
