@@ -1,0 +1,29 @@
+.calendar {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.calendar th,
+.calendar td {
+    border: 1px solid #000000;
+    text-align: center;
+    padding: auto;
+}
+
+.calendar th {
+    background-color: #f2f2f2;
+}
+
+.calendar td {
+    cursor: pointer;
+}
+
+.calendar td:hover {
+    background-color: rgba(255, 255, 255, 1);
+    backdrop-filter: blur(20px);
+}
+
+.today {
+    background-color: #ffc107;
+}

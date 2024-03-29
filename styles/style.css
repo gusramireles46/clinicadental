@@ -1,0 +1,32 @@
+body {
+    background-color: rgb(221, 240, 255);
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+}
+
+.dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+}
+
+.blur-background-dark {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+}
+
+.blur-background-transparent {
+    background-color: transparent;
+    backdrop-filter: blur(20px);
+}
