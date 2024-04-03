@@ -56,5 +56,6 @@ class Sistema extends Config
                 }
             }
         }
+        return false;
     }
 }
