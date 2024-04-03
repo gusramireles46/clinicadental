@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . '\\components\\header.php';
+include __DIR__ . '/components/header.php';
 ?>
 <link rel="stylesheet" href="./styles/calendar.css">
 <section class="container">
@@ -12,7 +12,7 @@ include __DIR__ . '\\components\\header.php';
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src=".\assets\\images\\banner1.jpg" alt="Banner 1" class="d-block w-100">
+                    <img src="./assets/images/banner1.jpg" alt="Banner 1" class="d-block w-100">
                     <div class="carousel-caption d-md-block">
                         <h5>Clínica Dental Integral</h5>
                         <p>Agenda tu cita, la consulta es gratis.</p>
@@ -63,5 +63,5 @@ include __DIR__ . '\\components\\header.php';
 </section>
 <script src="./js/calendar.js"></script>
 <?php
-include __DIR__ . '\\components\\footer.php';
+include __DIR__ . '/components/footer.php';
 ?>
