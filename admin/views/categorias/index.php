@@ -23,7 +23,7 @@
                         <th class="align-middle" scope="row"><?php echo $dato['id_categoria']; ?></th>
                         <td class="align-middle"><?php echo $dato['categoria']; ?></td>
                         <td class="align-middle"><?php echo $dato['descripcion']; ?></td>
-                        <td class="align-middle"><img style="width: 65px" src="../assets/images/categorias/<?php echo $dato['imagen'] ?>" alt="Imagen de <?php echo $dato['categoria'] ?>"></td>
+                        <td class="align-middle"><img style="width: 65px" src="../assets/images/categorias/<?php echo $dato['imagen']; ?>" alt="Imagen de <?php echo $dato['categoria'] ?>"></td>
                         <td class="align-middle">
                             <div class="btn-group">
                                 <a href="categorias.php?action=UPDATE&id_categoria=<?php echo $dato['id_categoria']; ?>" class="btn btn-warning mb-3">Editar</a>

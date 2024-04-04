@@ -23,6 +23,16 @@ switch ($action) {
         break;
     case 'DELETE':
         break;
+    case 'SAVE':
+        $datos = $_POST;
+        if ($app->insert($datos)) {
+            $app->alert('success', '<i class="fa-solid fa-circle-check"></i> Categoria agregada correctamente');
+        } else {
+            $app->alert('danger', '<i class="fa-solid fa-circle-xmark"></i> No se pudo registrar la categoria');
+        }
+        $datos = $app->getAll();
+        include __DIR__ . '/views/categorias/index.php';
+        break;
     default:
         $datos = $app->getAll();
         include __DIR__ . '/views/categorias/index.php';

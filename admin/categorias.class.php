@@ -37,14 +37,16 @@ class Categoria extends Sistema
         if ($this->validateCategoria($datos)) {
             if ($file_name) {
                 $stmt = $this->conn->prepare('INSERT INTO categorias (categoria, descripcion, imagen) VALUES (:categoria, :descripcion, :imagen)');
-                $stmt->bindParam(':imagen', $datos['imagen'], PDO::PARAM_STR);
+                $stmt->bindParam(':imagen', $file_name, PDO::PARAM_STR);
             } else {
                 $stmt = $this->conn->prepare('INSERT INTO categorias (categoria, descripcion) VALUES (:categoria, :descripcion)');
             }
             $stmt->bindParam(':categoria', $datos['categoria'], PDO::PARAM_STR);
             $stmt->bindParam(':descripcion', $datos['descripcion'], PDO::PARAM_STR);
             $stmt->execute();
+            return $stmt->rowCount();
         }
+        return 0;
     }
 
     private function validateCategoria($datos)

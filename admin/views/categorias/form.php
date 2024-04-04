@@ -1,6 +1,6 @@
 <div class="container">
     <h1><?php echo ($action == 'UPDATE') ? 'Actualizar información de la categoria' : 'Agregar nueva categoria'; ?></h1>
-    <form action="marca.php?action=<?php echo ($action == 'UPDATE') ? 'EDIT&id_marca=' . $datos['id_categoria'] : 'SAVE'; ?>"
+    <form action="categorias.php?action=<?php echo ($action == 'UPDATE') ? 'EDIT&id_categoria=' . $datos['id_categoria'] : 'SAVE'; ?>"
           method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-lg-8 col-md-12">

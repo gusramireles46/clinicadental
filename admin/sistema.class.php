@@ -42,16 +42,16 @@ class Sistema extends Config
 
     function upload($carpeta)
     {
-        if (in_array($_FILES['fotografia']['type'], $this->getImageType())) {
-            if ($_FILES['fotografia']['size'] <= $this->getImageSize()) {
+        if (in_array($_FILES['imagen']['type'], $this->getImageType())) {
+            if ($_FILES['imagen']['size'] <= $this->getImageSize()) {
                 $n = rand(1, 1000000);
-                $nombre_archivo = $n . $_FILES['fotografia']['size'] . $_FILES['fotografia']['name'];
+                $nombre_archivo = $n . $_FILES['imagen']['size'] . $_FILES['imagen']['name'];
                 $nombre_archivo = md5($nombre_archivo);
-                $extension = pathinfo($_FILES['fotografia']['name'], PATHINFO_EXTENSION);
+                $extension = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
                 $nombre_archivo = $nombre_archivo . "." . $extension;
-                $ruta = '../../assets/images/' . $carpeta . '/' . $nombre_archivo;
+                $ruta = '../assets/images/' . $carpeta . '/' . $nombre_archivo;
                 if (!file_exists($ruta)) {
-                    move_uploaded_file($_FILES['fotografia']['tmp_name'], $ruta);
+                    move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta);
                     return $nombre_archivo;
                 }
             }
