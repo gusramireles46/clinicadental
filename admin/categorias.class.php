@@ -49,6 +49,15 @@ class Categoria extends Sistema
         return 0;
     }
 
+    function delete($id_categoria)
+    {
+        $this->connect();
+        $stmt = $this->conn->prepare('DELETE FROM categorias WHERE id_categoria = :id_categoria;');
+        $stmt->bindParam(':id_categoria', $id_categoria, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->rowCount();
+    }
+
     private function validateCategoria($datos)
     {
         if (empty($datos['categoria'])) {

@@ -22,13 +22,20 @@ switch ($action) {
         }
         break;
     case 'DELETE':
+        if ($app->delete($id_categoria)) {
+            $app->alert('success', '<i class="fa-solid fa-circle-check"></i> Categoria eliminada correctamente');
+        } else {
+            $app->alert('danger', '<i class="fa-solid fa-circle-xmark"></i> No se ha podido eliminar la categoria');
+        }
+        $datos = $app->getAll();
+        include __DIR__ . '/views/categorias/index.php';
         break;
     case 'SAVE':
         $datos = $_POST;
         if ($app->insert($datos)) {
             $app->alert('success', '<i class="fa-solid fa-circle-check"></i> Categoria agregada correctamente');
         } else {
-            $app->alert('danger', '<i class="fa-solid fa-circle-xmark"></i> No se pudo registrar la categoria');
+            $app->alert('danger', '<i class="fa-solid fa-circle-xmark"></i> No se ha podido registrar la categoria');
         }
         $datos = $app->getAll();
         include __DIR__ . '/views/categorias/index.php';
