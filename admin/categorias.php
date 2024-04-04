@@ -12,7 +12,7 @@ switch ($action) {
         include __DIR__ . '/views/categorias/form.php';
         break;
     case 'UPDATE':
-        $datos = $app->getOne($id_categoria);
+        $datos = $app->getById($id_categoria);
         if (isset($datos['id_categoria'])) {
             include __DIR__ . '/views/categorias/form.php';
         } else {

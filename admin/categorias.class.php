@@ -14,7 +14,7 @@ class Categoria extends Sistema
         return $datos;
     }
 
-    function getOne($id_categoria)
+    function getById($id_categoria)
     {
         $this->connect();
         $stmt = $this->conn->prepare('SELECT * FROM categorias WHERE id_categoria = :id_categoria;');
