@@ -58,6 +58,26 @@ class Categoria extends Sistema
         return $stmt->rowCount();
     }
 
+    function update($id_categoria, $datos)
+    {
+        $this->connect();
+        $file_name = $this->upload('categorias');
+        if ($this->validateCategoria($datos)) {
+            if ($file_name) {
+                $stmt = $this->conn->prepare('UPDATE categorias SET categoria = :categoria, descripcion = :descripcion, imagen = :imagen WHERE id_categoria = :id_categoria;');
+                $stmt->bindParam(':imagen', $file_name, PDO::PARAM_STR);
+            } else {
+                $stmt = $this->conn->prepare('UPDATE categorias SET categoria = :categoria, descripcion = :descripcion WHERE id_categoria = :id_categoria;');
+            }
+            $stmt->bindParam(':categoria', $datos['categoria'], PDO::PARAM_STR);
+            $stmt->bindParam(':descripcion', $datos['descripcion'], PDO::PARAM_STR);
+            $stmt->bindParam(':id_categoria', $id_categoria, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->rowCount();
+        }
+        return 0;
+    }
+
     private function validateCategoria($datos)
     {
         if (empty($datos['categoria'])) {

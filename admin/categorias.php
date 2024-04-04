@@ -12,23 +12,35 @@ switch ($action) {
         include __DIR__ . '/views/categorias/form.php';
         break;
     case 'UPDATE':
-        $datos = $app->getById($id_categoria);
-        if (isset($datos['id_categoria'])) {
-            include __DIR__ . '/views/categorias/form.php';
+        $datos = $_POST;
+        if ($app->update($id_categoria, $datos)) {
+            $app->alert('success', '<i class="fa-solid fa-circle-check"></i> Categoria actualizada correctamente');
         } else {
-            $datos = $app->getAll();
-            $app->alert('danger', '<i class="fa-solid fa-circle-xmark"></i> No se ha encontrado la categoria especificada');
-            include __DIR__ . '/views/categorias/index.php';
+            $app->alert('danger', '<i class="fa-solid fa-circle-xmark"></i> No se ha podido actualizar la categoria especificada');
         }
+        $datos = $app->getAll();
+        include __DIR__ . '/views/categorias/index.php';
         break;
     case 'DELETE':
         if ($app->delete($id_categoria)) {
             $app->alert('success', '<i class="fa-solid fa-circle-check"></i> Categoria eliminada correctamente');
         } else {
             $app->alert('danger', '<i class="fa-solid fa-circle-xmark"></i> No se ha podido eliminar la categoria');
+//            header("refresh:5;url=basename(__FILE__)");
         }
         $datos = $app->getAll();
         include __DIR__ . '/views/categorias/index.php';
+        break;
+    case 'EDIT':
+        $datos = $app->getById($id_categoria);
+        if (isset($datos['id_categoria'])) {
+            include __DIR__ . '/views/categorias/form.php';
+        } else {
+            $datos = $app->getAll();
+            $app->alert('danger', '<i class="fa-solid fa-circle-xmark"></i> No se ha encontrado la categoria especificada');
+//            header("refresh:2;url=" . basename(__FILE__));
+            include __DIR__ . '/views/categorias/index.php';
+        }
         break;
     case 'SAVE':
         $datos = $_POST;
