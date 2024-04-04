@@ -27,7 +27,7 @@ class Sistema extends Config
         $alert = array();
         $alert['type'] = $type;
         $alert['message'] = $message;
-        include __DIR__ . '/components/alert.php';
+        include dirname(__DIR__) . '/components/alert.php';
     }
 
     function setCount($count)
@@ -49,7 +49,7 @@ class Sistema extends Config
                 $nombre_archivo = md5($nombre_archivo);
                 $extension = pathinfo($_FILES['fotografia']['name'], PATHINFO_EXTENSION);
                 $nombre_archivo = $nombre_archivo . "." . $extension;
-                $ruta = '../assets/images/' . $carpeta . '/' . $nombre_archivo;
+                $ruta = '../../assets/images/' . $carpeta . '/' . $nombre_archivo;
                 if (!file_exists($ruta)) {
                     move_uploaded_file($_FILES['fotografia']['tmp_name'], $ruta);
                     return $nombre_archivo;
