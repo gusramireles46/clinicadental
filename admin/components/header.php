@@ -25,17 +25,12 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="./">Inicio</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./servicios">Servicios</a>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Atención
+                        Administración
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" href="./categorias.php">Categorias</a></li>
                     </ul>
                 </li>
             </ul>
