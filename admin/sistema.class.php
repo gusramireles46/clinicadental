@@ -27,7 +27,7 @@ class Sistema extends Config
         $alert = array();
         $alert['type'] = $type;
         $alert['message'] = $message;
-        include dirname(__DIR__) . '/components/alert.php';
+        include __DIR__. '/components/alert.php';
     }
 
     function setCount($count)

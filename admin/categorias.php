@@ -16,10 +16,8 @@ switch ($action) {
         if (isset($datos['id_categoria'])) {
             include __DIR__ . '/views/categorias/form.php';
         } else {
-            $alert['type'] = 'danger';
-            $alert['message'] = '<i class="fa-solid fa-circle-xmark"></i> No se ha encontrado la categoria especificada';
             $datos = $app->getAll();
-            include __DIR__ . '/components/alert.php';
+            $app->alert('danger', '<i class="fa-solid fa-circle-xmark"></i> No se ha encontrado la categoria especificada');
             include __DIR__ . '/views/categorias/index.php';
         }
         break;
