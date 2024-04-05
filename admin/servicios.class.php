@@ -6,7 +6,7 @@ class Servicio extends Sistema
     public function getAll()
     {
         $this->connect();
-        $stmt = $this->conn->prepare('SELECT s.id_servicio AS id_servicio, s.servicio AS servicio, s.descripcion AS descripcion, s.precio AS precio, c.categoria AS categoria, s.imagen AS imagen FROM servicios s JOIN categorias c ON c.id_categoria = s.id_categoria;');
+        $stmt = $this->conn->prepare('SELECT s.id_servicio AS id_servicio, s.servicio AS servicio, s.descripcion AS descripcion, s.precio AS precio, c.categoria AS categoria, s.imagen AS imagen FROM servicios s JOIN categorias c ON c.id_categoria = s.id_categoria ORDER BY s.id_servicio;');
         $stmt->execute();
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $datos = $stmt->fetchAll();
@@ -33,7 +33,8 @@ class Servicio extends Sistema
     public function insert($datos)
     {
         $this->connect();
-        $filename = $this->upload('servicios');
+        $prefijo = $datos['servicio'];
+        $filename = $this->upload('servicios', $prefijo);
         if ($this->validateServicio($datos)) {
             if ($filename) {
                 $stmt = $this->conn->prepare('INSERT INTO servicios (servicio, descripcion, precio, imagen, id_categoria) VALUES (:servicio, :descripcion, :precio, :imagen, :id_categoria);');

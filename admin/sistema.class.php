@@ -40,13 +40,13 @@ class Sistema extends Config
         return $this->count;
     }
 
-    function upload($carpeta)
+    function upload($carpeta, $prefijo)
     {
         if (in_array($_FILES['imagen']['type'], $this->getImageType())) {
             if ($_FILES['imagen']['size'] <= $this->getImageSize()) {
                 $n = rand(1, 1000000);
                 $nombre_archivo = $n . $_FILES['imagen']['size'] . $_FILES['imagen']['name'];
-                $nombre_archivo = md5($nombre_archivo);
+                $nombre_archivo = str_replace(' ', '', $prefijo) . '_' . md5($nombre_archivo);
                 $extension = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
                 $nombre_archivo = $nombre_archivo . "." . $extension;
                 $ruta = '../assets/images/' . $carpeta . '/' . $nombre_archivo;
