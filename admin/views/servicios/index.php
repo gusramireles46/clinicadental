@@ -26,11 +26,11 @@
                         <td class="align-middle"><?php echo $dato['servicio']; ?></td>
                         <td class="align-middle"><?php echo $dato['descripcion']; ?></td>
                         <td class="align-middle"><?php echo $dato['categoria']; ?></td>
-                        <td class="align-middle">$<?php echo $dato['precio']; ?></td>
+                        <td class="align-middle"><?php echo ($dato['precio'] == 0) ? 'GRATIS' : '$' .$dato['precio']; ?></td>
                         <td class="align-middle"><img style="width: 65px" src="../assets/images/servicios/<?php echo $dato['imagen']; ?>" alt="Imagen del <?php echo $dato['servicio'] ?>"></td>
                         <td class="align-middle">
                             <div class="btn-group">
-                                <a href="servicios.php?action=EDIT&id_servicio=<?php echo $dato['id_servicio']; ?>" class="btn btn-warning mb-3">Editar</a>
+                                <a href="servicios.php?action=EDIT&id_servicio=<?php echo $dato['id_servicio']; ?>" class="btn btn-primary mb-3">Editar</a>
                                 <a href="servicios.php?action=DELETE&id_servicio=<?php echo $dato['id_servicio']; ?>" class="btn btn-danger mb-3">Eliminar</a>
                             </div>
                         </td>
