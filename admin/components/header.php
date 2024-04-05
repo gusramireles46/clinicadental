@@ -31,6 +31,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="./categorias.php">Categorias</a></li>
+                        <li><a class="dropdown-item" href="./servicios.php">Servicios</a></li>
                     </ul>
                 </li>
             </ul>

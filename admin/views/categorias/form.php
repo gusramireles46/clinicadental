@@ -10,7 +10,7 @@
                         <input required type="text" class="form-control" id="categoria" placeholder="Categoria"
                                name="categoria"
                                value="<?php echo (isset($datos['categoria'])) ? $datos['categoria'] : '' ?>">
-                        <label for="marca">Categoria</label>
+                        <label for="categoria">Categoria</label>
                     </div>
                 </div>
                 <div class="input-group mb-3">
@@ -19,7 +19,7 @@
                         <input required type="text" class="form-control" id="descripcion" placeholder="Descripción"
                                name="descripcion"
                                value="<?php echo (isset($datos['descripcion'])) ? $datos['descripcion'] : '' ?>">
-                        <label for="marca">Descripción</label>
+                        <label for="descripcion">Descripción</label>
                     </div>
                 </div>
                 <div class="input-group mb-3">
@@ -28,7 +28,7 @@
                         <input accept="image/jpeg, image/png" type="file" class="form-control" id="imagen"
                                placeholder="Imagen" name="imagen"
                                value="<?php echo (isset($datos['imagen'])) ? $datos['imagen'] : '' ?>">
-                        <label for="marca">Imagen</label>
+                        <label for="imagen">Imagen</label>
                     </div>
                 </div>
                 <input type="submit" value="Guardar" class="btn btn-success mb-3 btn-lg" style="width: auto;"

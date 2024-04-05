@@ -37,4 +37,5 @@
             </table>
         </div>
     </div>
+    <p><?php echo ($app->getCount() != 1) ? "Se encontraron ".$app->getCount()." categorias" : "Se encontró ".$app->getCount()." categoria"?></p>
 </div>
