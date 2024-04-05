@@ -33,11 +33,12 @@ class Categoria extends Sistema
     function insert($datos)
     {
         $this->connect();
-        $file_name = $this->upload('categorias');
+        $prefijo = $datos['categoria'];
+        $filename = $this->upload('categorias', $prefijo);
         if ($this->validateCategoria($datos)) {
-            if ($file_name) {
+            if ($filename) {
                 $stmt = $this->conn->prepare('INSERT INTO categorias (categoria, descripcion, imagen) VALUES (:categoria, :descripcion, :imagen)');
-                $stmt->bindParam(':imagen', $file_name, PDO::PARAM_STR);
+                $stmt->bindParam(':imagen', $filename, PDO::PARAM_STR);
             } else {
                 $stmt = $this->conn->prepare('INSERT INTO categorias (categoria, descripcion) VALUES (:categoria, :descripcion)');
             }
@@ -61,11 +62,12 @@ class Categoria extends Sistema
     function update($id_categoria, $datos)
     {
         $this->connect();
-        $file_name = $this->upload('categorias');
+        $prefijo = $datos['categoria'];
+        $filename = $this->upload('categorias', $prefijo);
         if ($this->validateCategoria($datos)) {
-            if ($file_name) {
+            if ($filename) {
                 $stmt = $this->conn->prepare('UPDATE categorias SET categoria = :categoria, descripcion = :descripcion, imagen = :imagen WHERE id_categoria = :id_categoria;');
-                $stmt->bindParam(':imagen', $file_name, PDO::PARAM_STR);
+                $stmt->bindParam(':imagen', $filename, PDO::PARAM_STR);
             } else {
                 $stmt = $this->conn->prepare('UPDATE categorias SET categoria = :categoria, descripcion = :descripcion WHERE id_categoria = :id_categoria;');
             }

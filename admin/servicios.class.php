@@ -55,7 +55,8 @@ class Servicio extends Sistema
     public function update($id_servicio, $datos)
     {
         $this->connect();
-        $filename = $this->upload('servicios');
+        $prefijo = $datos['servicio'];
+        $filename = $this->upload('servicios', $prefijo);
         if ($this->validateServicio($datos)) {
             if ($filename) {
                 $stmt = $this->conn->prepare('UPDATE servicios SET servicio = :servicio, descripcion = :descripcion, precio = :precio, imagen = :imagen, id_categoria = :id_categoria WHERE id_servicio = :id_servicio;');
