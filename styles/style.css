@@ -30,3 +30,17 @@ body {
     background-color: transparent;
     backdrop-filter: blur(20px);
 }
+
+.img-form-style {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    padding: 5px;
+}
+
+.text-justify {
+    text-align: justify;
+    text-justify: inter-word;
+ }

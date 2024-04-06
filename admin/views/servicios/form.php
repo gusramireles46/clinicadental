@@ -48,7 +48,7 @@
                 <?php if ($action == 'EDIT') : ?>
                     <label for="">Imágen actual</label>
                     <div class="mb-3 col-lg-4 col-md-12">
-                        <img class="img-thumbnail" src="../assets/images/servicios/<?php echo $datos['imagen']; ?>"
+                        <img class="img-form-style" src="../assets/images/servicios/<?php echo $datos['imagen']; ?>"
                              alt="Imagen de <?php echo $datos['servicio']; ?>">
                     </div>
                 <?php endif; ?>

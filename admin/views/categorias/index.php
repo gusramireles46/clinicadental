@@ -8,7 +8,7 @@
     <div class="row mb-3">
         <div class="col">
             <table class="table">
-                <thead>
+                <thead class="table-dark">
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nombre</th>
@@ -22,7 +22,7 @@
                     <tr>
                         <th class="align-middle" scope="row"><?php echo $dato['id_categoria']; ?></th>
                         <td class="align-middle"><?php echo $dato['categoria']; ?></td>
-                        <td class="align-middle"><?php echo $dato['descripcion']; ?></td>
+                        <td class="align-middle text-justify"><?php echo $dato['descripcion']; ?></td>
                         <td class="align-middle"><img style="width: 65px" src="../assets/images/categorias/<?php echo $dato['imagen']; ?>" alt="Imagen de <?php echo $dato['categoria'] ?>"></td>
                         <td class="align-middle">
                             <div class="btn-group">

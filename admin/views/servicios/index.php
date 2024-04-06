@@ -7,9 +7,9 @@
     </div>
     <div class="row mb-3">
         <div class="col">
-            <table class="table table-striped">
-                <thead>
-                <tr class="text-center">
+            <table class="table">
+                <thead class="table-dark">
+                <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Descripcion</th>
@@ -22,13 +22,13 @@
                 <tbody>
                 <?php foreach ($datos as $dato) : ?>
                     <tr>
-                        <th class="align-middle text-center" scope="row"><?php echo $dato['id_servicio']; ?></th>
+                        <th class="align-middle" scope="row"><?php echo $dato['id_servicio']; ?></th>
                         <td class="align-middle"><?php echo $dato['servicio']; ?></td>
-                        <td class="align-middle" style="text-align: justify;"><?php echo $dato['descripcion']; ?></td>
+                        <td class="align-middle text-justify"><?php echo $dato['descripcion']; ?></td>
                         <td class="align-middle"><?php echo $dato['categoria']; ?></td>
-                        <td class="align-middle text-center"><?php echo ($dato['precio'] == 0) ? 'GRATIS' : '$' .$dato['precio']; ?></td>
-                        <td class="align-middle text-center"><img style="width: 85px; height: 85px;" src="../assets/images/servicios/<?php echo $dato['imagen']; ?>" alt="Imagen del <?php echo $dato['servicio'] ?>"></td>
-                        <td class="align-middle text-center">
+                        <td class="align-middle"><?php echo ($dato['precio'] == 0) ? 'GRATIS' : '$' .$dato['precio']; ?></td>
+                        <td class="align-middle"><img style="width: 85px; height: 85px;" src="../assets/images/servicios/<?php echo $dato['imagen']; ?>" alt="Imagen del <?php echo $dato['servicio'] ?>"></td>
+                        <td class="align-middle">
                             <div class="btn-group">
                                 <a href="servicios.php?action=EDIT&id_servicio=<?php echo $dato['id_servicio']; ?>" class="btn btn-primary mb-3">Editar</a>
                                 <a href="servicios.php?action=DELETE&id_servicio=<?php echo $dato['id_servicio']; ?>" class="btn btn-danger mb-3">Eliminar</a>

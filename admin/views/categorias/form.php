@@ -22,6 +22,14 @@
                         <label for="descripcion">Descripción</label>
                     </div>
                 </div>
+                <?php if ($action == 'EDIT') : ?>
+                    <label for="">Imágen actual</label>
+                    <div class="mb-3 col-lg-4 col-md-12">
+                        <img class="img-form-style" src="../assets/images/categorias/<?php echo $datos['imagen']; ?>"
+                             alt="Imagen de <?php echo $datos['categoria']; ?>">
+                    </div>
+                <?php endif; ?>
+
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="imagen"><i class="fa-solid fa-images"></i></label>
                     <div class="form-floating">
