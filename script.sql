@@ -8,7 +8,7 @@ USE clinicadental;
 CREATE TABLE categorias (
     id_categoria INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
-    descripcion VARCHAR(100) NOT NULL,
+    descripcion TEXT NOT NULL,
     imagen VARCHAR(100) DEFAULT 'default.png'
 );
 
@@ -16,7 +16,7 @@ CREATE TABLE servicios(
     id_servicio INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     precio FLOAT NOT NULL,
-    descripcion VARCHAR(100) NOT NULL,
+    descripcion TEXT NOT NULL,
     imagen VARCHAR(100) DEFAULT 'default.png',
     id_categoria INT NOT NULL,
     FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria),
@@ -33,16 +33,17 @@ CREATE TABLE empleado (
 );
 
 CREATE TABLE dentista (
-    id_medico INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_dentista INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     apellido_paterno VARCHAR(100) NOT NULL,
     apellido_materno VARCHAR(100) NOT NULL,
     telefono VARCHAR(10) NOT NULL,
+    correo VARCHAR(100) NOT NULL UNIQUE,
     dias_habiles VARCHAR(100) NOT NULL,
     especialidad VARCHAR(100) NOT NULL,
     hora_inicio TIME NOT NULL,
     hora_fin TIME NOT NULL,
-    imagen VARCHAR(100) DEFAULT 'default.png'
+    imagen LONGBLOB
 );
 
 CREATE TABLE paciente (
@@ -62,7 +63,7 @@ CREATE TABLE cita (
     id_servicio INT NOT NULL,
     fecha DATE NOT NULL,
     hora TIME NOT NULL,
-    FOREIGN KEY (id_medico) REFERENCES dentista(id_medico),
+    FOREIGN KEY (id_medico) REFERENCES dentista(id_dentista),
     FOREIGN KEY (id_paciente) REFERENCES paciente(id_paciente),
     FOREIGN KEY (id_servicio) REFERENCES servicios(id_servicio)
 );
