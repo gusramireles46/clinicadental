@@ -16,9 +16,8 @@
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="bi bi-body-text"></i></span>
                     <div class="form-floating">
-                        <input required type="text" class="form-control" id="descripcion" placeholder="Descripción"
-                               name="descripcion"
-                               value="<?php echo (isset($datos['descripcion'])) ? $datos['descripcion'] : '' ?>">
+                        <textarea name="descripcion" id="descripcion" style="height: 100px;" placeholder="Descripción"
+                                  class="text-justify form-control"><?php echo (isset($datos['descripcion'])) ? $datos['descripcion'] : '' ?></textarea>
                         <label for="descripcion">Descripción</label>
                     </div>
                 </div>
