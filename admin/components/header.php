@@ -33,6 +33,7 @@
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="./categorias.php">Categorias</a></li>
                         <li><a class="dropdown-item" href="./servicios.php">Servicios</a></li>
+                        <li><a class="dropdown-item" href="./dentistas.php">Dentistas</a></li>
                     </ul>
                 </li>
             </ul>
