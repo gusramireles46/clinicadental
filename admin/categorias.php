@@ -2,6 +2,7 @@
 include __DIR__ . '/categorias.class.php';
 include __DIR__ . '/components/header.php';
 $app = new Categoria();
+$app->checkRol('Administrador', true);
 $categorias = $app->getAll();
 $action = isset($_GET['action']) ? $_GET['action'] : null;
 $id_categoria = isset($_GET['id_categoria']) ? $_GET['id_categoria'] : null;

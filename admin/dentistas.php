@@ -2,6 +2,7 @@
 include __DIR__ . '/dentistas.class.php';
 include __DIR__ . '/components/header.php';
 $app = new Dentista();
+$app->checkRol('Administrador', true);
 $dentistas = $app->getAll();
 $action = isset($_GET['action']) ? $_GET['action'] : null;
 $id_dentista = isset($_GET['id_dentista']) ? $_GET['id_dentista'] : null;

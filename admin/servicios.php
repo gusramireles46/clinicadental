@@ -3,6 +3,7 @@ include __DIR__ . '/servicios.class.php';
 include __DIR__ . '/categorias.class.php';
 include __DIR__ . '/components/header.php';
 $app = new Servicio();
+$app->checkRol('Administrador', true);
 $appCategoria = new Categoria();
 $servicios = $app->getAll();
 $categorias = $appCategoria->getAll();
