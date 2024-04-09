@@ -26,7 +26,7 @@
                         <td class="align-middle"><img style="width: 65px" src="../assets/images/categorias/<?php echo $dato['imagen']; ?>" alt="Imagen de <?php echo $dato['categoria'] ?>"></td>
                         <td class="align-middle">
                             <div class="btn-group">
-                                <a href="categorias.php?action=EDIT&id_categoria=<?php echo $dato['id_categoria']; ?>" class="btn btn-warning mb-3">Editar</a>
+                                <a href="categorias.php?action=EDIT&id_categoria=<?php echo $dato['id_categoria']; ?>" class="btn btn-primary mb-3">Editar</a>
                                 <a href="categorias.php?action=DELETE&id_categoria=<?php echo $dato['id_categoria']; ?>" class="btn btn-danger mb-3">Eliminar</a>
                             </div>
                         </td>
