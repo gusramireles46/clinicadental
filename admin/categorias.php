@@ -27,7 +27,6 @@ switch ($action) {
             $app->alert('success', '<i class="fa-solid fa-circle-check"></i> Categoria eliminada correctamente');
         } else {
             $app->alert('danger', '<i class="fa-solid fa-circle-xmark"></i> No se ha podido eliminar la categoria');
-//            header("refresh:5;url=basename(__FILE__)");
         }
         $datos = $app->getAll();
         include __DIR__ . '/views/categorias/index.php';
@@ -39,7 +38,6 @@ switch ($action) {
         } else {
             $datos = $app->getAll();
             $app->alert('danger', '<i class="fa-solid fa-circle-xmark"></i> No se ha encontrado la categoria especificada');
-//            header("refresh:2;url=" . basename(__FILE__));
             include __DIR__ . '/views/categorias/index.php';
         }
         break;
