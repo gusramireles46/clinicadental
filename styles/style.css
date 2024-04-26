@@ -1,5 +1,6 @@
 body {
-    background-color: rgb(221, 240, 255);
+    /*background-color: rgb(221, 240, 255);*/
+    background-color: #FFFFFF;
 }
 
 .carousel-caption {
@@ -43,7 +44,7 @@ body {
 .text-justify {
     text-align: justify;
     text-justify: inter-word;
- }
+}
 
 .background-custom {
     /* fallback for old browsers */
@@ -59,4 +60,17 @@ body {
 .body-custom {
     border-radius: 15px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+.card-image {
+    width: 200px;
+    height: 200px;
+    text-align: center;
+}
+
+.card-image:hover {
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    opacity: 0.5;
 }
