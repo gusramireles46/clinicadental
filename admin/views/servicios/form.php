@@ -29,9 +29,11 @@
                             <?php
                             foreach ($categorias as $categoria) :
                                 $selected = ($categoria['id_categoria'] == $datos['id_categoria']) ? 'selected' : '';
-                            ?>
+                                ?>
+
                                 <option value="<?php echo $categoria['id_categoria']; ?>" <?php echo $selected; ?>><?php echo $categoria['categoria']; ?></option>
                             <?php endforeach; ?>
+
                         </select>
                         <label for="categoria">Categoria</label>
                     </div>

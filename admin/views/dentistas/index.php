@@ -3,6 +3,7 @@
     <div class="row mb-3">
         <div class="col-lg-4">
             <a href="dentistas.php?action=CREATE" class="btn btn-success">Nuevo</a>
+            <a href="reportes.php?action=DENTISTAS" class="btn btn-warning" target="_blank">Generar lista</a>
         </div>
     </div>
     <div class="row mb-3">

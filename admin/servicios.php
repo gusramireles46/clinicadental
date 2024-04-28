@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include __DIR__ . '/servicios.class.php';
 include __DIR__ . '/categorias.class.php';
 include __DIR__ . '/components/header.php';
