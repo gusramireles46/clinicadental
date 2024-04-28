@@ -7,6 +7,8 @@ const tomarFotoCheckbox = document.getElementById('tomar-foto-checkbox');
 const fotoContainer = document.getElementById('foto-container');
 const canvas = document.createElement('canvas');
 const context = canvas.getContext('2d');
+canvas.width = 1280;
+canvas.height = 720;
 
 function initializeCamera() {
     navigator.mediaDevices.getUserMedia({
