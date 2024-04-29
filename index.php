@@ -40,7 +40,7 @@ $datos = $web->getAll();
     <section class="bg-body-secondary" style="padding-top: 50px; padding-bottom: 50px;">
         <div class="container">
             <div class="row">
-                <div class="col">
+                <div class="col mb-3">
                     <div class="card w-100">
                         <div style="text-align: center;">
                             <img src="assets/images/categorias/default.png" class="card-img-top card-image"
@@ -53,7 +53,7 @@ $datos = $web->getAll();
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col mb-3">
                     <div class="card w-100">
                         <div style="text-align: center;">
                             <img src="assets/images/servicios/default.png" class="card-img-top card-image"
@@ -67,7 +67,7 @@ $datos = $web->getAll();
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col mb-3">
                     <div class="card w-100">
                         <div style="text-align: center;">
                             <img src="assets/images/cita.png" class="card-img-top card-image" alt="Cita">
@@ -89,7 +89,7 @@ $datos = $web->getAll();
                 <h3>Servicios</h3>
 
                 <?php foreach ($datos as $servicio) : ?>
-                    <div class="col-3">
+                    <div class="col-lg-3 col-md-12 mb-3">
                         <div class="card">
                             <div class="card-body">
                                 <div style="text-align: center;">
@@ -115,7 +115,7 @@ $datos = $web->getAll();
         <div class="container" style="padding-bottom: 50px; padding-top: 50px;">
             <div class="row">
                 <h3>Contactanos o visitanos</h3>
-                <div class="col-4">
+                <div class="col-lg-4 col-md-12 mb-3">
                     <div class="card" style="height: 300px;">
                         <div class="card-body">
                             <h5 class="card-title"><i class="fa fa-hospital"></i> Direccion</h5>
@@ -129,7 +129,7 @@ $datos = $web->getAll();
                         </div>
                     </div>
                 </div>
-                <div class="col-8">
+                <div class="col-lg-8 col-md-12 mb-3">
                     <div class="card" style="height: 300px; padding: 10px;">
                         <h5 class="card-title"><i class="fa fa-map"></i> Ubicación del consultorio</h5>
                         <p class="card-text">38160, C. Nicolás Bravo 202, Zona Centro, Apaseo el Grande, Gto</p>

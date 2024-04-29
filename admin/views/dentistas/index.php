@@ -23,7 +23,6 @@
                     <th scope="col" class="text-center" colspan="2">Horario</th>
                     <th scope="col">Acciones</th>
                 </tr>
-                </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($datos as $dato) : ?>
