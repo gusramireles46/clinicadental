@@ -10,7 +10,7 @@ class Reportes extends Sistema
     {
         try {
             $this->connect();
-            $stmt = $this->conn->prepare("SELECT id_dentista, nombre, apellido_paterno, apellido_materno, telefono, dias_habiles, especialidad, TIME_FORMAT(hora_inicio, '%H:%i %p') AS hora_inicio, TIME_FORMAT(hora_fin, '%H:%i %p') AS hora_fin, fotografia, correo FROM dentista ORDER BY apellido_paterno;");
+            $stmt = $this->conn->prepare("SELECT id_dentista, nombre, apellido_paterno, apellido_materno, telefono, dias_habiles, especialidad, TIME_FORMAT(hora_inicio, '%h:%i %p') AS hora_inicio, TIME_FORMAT(hora_fin, '%h:%i %p') AS hora_fin, fotografia, correo FROM dentista ORDER BY apellido_paterno;");
             $stmt->execute();
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $datos = $stmt->fetchAll();

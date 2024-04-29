@@ -47,24 +47,15 @@
                     </ul>
                 </li>
                 <li class="nav-item" id="login-logout">
-                    <a class="nav-link" href="<?php if (isset($_SESSION['roles'])) {
-                        echo ($_SESSION['valido']) ? 'login.php?action=LOGOUT' : 'login.php';
-                    } else {
-                        echo 'login.php';
-                    } ?>">
-                        <?php
-                        if (isset($_SESSION['roles'])) {
-                            if ($_SESSION['valido']) {
-                                echo '<i class="fas fa-sign-out-alt"></i> Cerrar sesión';
-                            } else {
-                                echo '<i class="fas fa-sign-in-alt"></i> Iniciar sesión';
-                            }
-                        } else {
-                            echo '<i class="fas fa-sign-in-alt"></i> Iniciar sesión';
-                        }
-                        ?>
+                    <a class="nav-link" href="<?php echo isset($_SESSION['valido']) && $_SESSION['valido'] ? 'login.php?action=LOGOUT' : 'login.php'; ?>">
+                        <?php if (isset($_SESSION['valido'])): ?>
+                            <?php echo $_SESSION['valido'] ? '<i class="fas fa-sign-out-alt"></i> Cerrar sesión' : '<i class="fas fa-sign-in-alt"></i> Iniciar sesión'; ?>
+                        <?php else: ?>
+                            <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+                        <?php endif; ?>
                     </a>
                 </li>
+
             </ul>
         </div>
     </div>
