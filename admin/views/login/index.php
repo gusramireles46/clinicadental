@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
 
-                                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Recuperar cuenta</a></p>
+                                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="?action=FORGOT">Recuperar cuenta</a></p>
 
                                 <input class="btn btn-outline-light btn-lg px-5" type="submit" value="Iniciar sesión">
 

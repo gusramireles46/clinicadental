@@ -1,6 +1,9 @@
 <?php
 require_once 'config.php';
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+
 class Sistema extends Config
 {
     var $conn;
@@ -153,5 +156,97 @@ class Sistema extends Config
             }
         }
         return false;
+    }
+
+    public function reset($username)
+    {
+        if ($this->checkEmail($username)) {
+            $this->connect();
+            $sql = "SELECT * FROM usuarios WHERE username = :username;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+            $stmt->execute();
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $datos = $stmt->fetchAll();
+            if (isset($datos[0])) {
+                $token1 = md5($username . 'R4nD0M');
+                $token2 = md5($username . date('Y-m-d H:i:s') . rand(1, 1000000));
+                $token = $token1 . $token2;
+                $sql = "UPDATE usuarios SET token = :token WHERE username = :username;";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bindParam(':token', $token, PDO::PARAM_STR);
+                $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+                $stmt->execute();
+                $destinatario = $username;
+                $usuario = $datos[0]['username'];
+                $asunto = 'Recuperación de contraseña';
+                $cuerpo = 'Hola ' . $usuario . ',<br><br>';
+                $cuerpo .= 'Hemos recibido una solicitud de recuperación de contraseña.<br>';
+                $cuerpo .= 'Para recuperar tu contraseña, haz click en el siguiente enlace:<br>';
+                $cuerpo .= '<a href="http://localhost/dentista/admin/login.php?action=RECOVERY&token=' . $token . '">Reestablecer contraseña</a><br><br>';
+                $cuerpo .= 'Si no has solicitado la recuperación de contraseña, ignora este mensaje.<br><br>';
+                $cuerpo .= 'Atentamente,<br>';
+                $cuerpo .= 'El equipo de Clinica Dental Integral';
+                if ($this->sendMail($destinatario, $username, $asunto, $cuerpo)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
+    public function recovery($token, $password = null)
+    {
+        $this->connect();
+        if (strlen($token) == 64) {
+            $sql = "SELECT * FROM usuarios WHERE token = :token;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':token', $token, PDO::PARAM_STR);
+            $stmt->execute();
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $datos = $stmt->fetchAll();
+            if (isset($datos[0])) {
+                if ($password != null) {
+                    $password = md5($password);
+                    $username = $datos[0]['username'];
+                    $sql = "UPDATE usuarios SET password = :password, token = null WHERE username = :username;";
+                    $stmt = $this->conn->prepare($sql);
+                    $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+                    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+                    $stmt->execute();
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private function checkEmail($username)
+    {
+        return filter_var($username, FILTER_VALIDATE_EMAIL);
+    }
+
+    private function sendMail($destinatario, $username, $asunto, $mensaje)
+    {
+        require dirname(__DIR__) . '/vendor/autoload.php';
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->Port = 465;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->SMTPAuth = true;
+        $mail->Username = '21030017@itcelaya.edu.mx';
+        $mail->Password = 'zhpnrgjwjfsjzmip';
+        $mail->setFrom('21030017@itcelaya.edu.mx', 'GUSTAVO RAMIREZ MIRELES');
+        $mail->addAddress($destinatario, $username);
+        $mail->Subject = $asunto;
+        $mail->CharSet = 'UTF-8';
+        $mail->msgHTML($mensaje);
+        if (!$mail->send())
+            return false;
+        else
+            return true;
     }
 }
