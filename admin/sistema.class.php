@@ -242,7 +242,7 @@ class Sistema extends Config
         $mail->setFrom('21030017@itcelaya.edu.mx', 'GUSTAVO RAMIREZ MIRELES');
         $mail->addAddress($destinatario, $username);
         $mail->Subject = $asunto;
-        $mail->CharSet = 'UTF-8';
+        $mail->CharSet = PHPMailer::CHARSET_UTF8;
         $mail->msgHTML($mensaje);
         if (!$mail->send())
             return false;
