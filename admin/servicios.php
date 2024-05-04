@@ -40,7 +40,7 @@ switch ($action) {
         if (isset($datos['id_servicio'])) {
             include __DIR__ . '/views/servicios/form.php';
         } else {
-            $app->alert('danger', '<i class="fa-solid fa-circle-xmark"></i> No se ha podido eliminar el servicio');
+            $app->alert('danger', '<i class="fa-solid fa-circle-xmark"></i> No se ha podido encontrar el servicio');
             include __DIR__ . '/views/servicios/index.php';
         }
         $datos = $app->getAll();

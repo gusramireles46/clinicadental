@@ -44,6 +44,9 @@
                         <li><a class="dropdown-item" href="./categorias.php">Categorias</a></li>
                         <li><a class="dropdown-item" href="./servicios.php">Servicios</a></li>
                         <li><a class="dropdown-item" href="./dentistas.php">Dentistas</a></li>
+                        <li><a class="dropdown-item" href="./privilegios.php">Privilegios</a></li>
+                        <li><a class="dropdown-item" href="./roles.php">Roles</a></li>
+                        <li><a class="dropdown-item" href="./usuarios.php">Usuarios</a></li>
                     </ul>
                 </li>
                 <li class="nav-item" id="login-logout">
