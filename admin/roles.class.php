@@ -95,18 +95,20 @@ class Rol extends Sistema
     {
         $this->connect();
         $rol = $this->getById($id_rol);
+        $nombreActualizado = false;
         if ($this->validateRol($datos) && $datos['rol'] != $rol['rol']) {
             $stmt = $this->conn->prepare('UPDATE rol SET rol = :rol WHERE id_rol = :id_rol;');
             $stmt->bindParam(':rol', $datos['rol'], PDO::PARAM_STR);
             $stmt->bindParam(':id_rol', $id_rol, PDO::PARAM_INT);
             $stmt->execute();
-            return $stmt->rowCount();
+            $nombreActualizado = true;
         }
+        $privilegiosActualizados = false;
         if (isset($datos['privilegios'])) {
-            $this->updatePrivilegios($id_rol, $datos['privilegios']);
-            return 1;
+            $privilegiosActualizados = $this->updatePrivilegios($id_rol, $datos['privilegios']);
         }
-        return 0;
+
+        return ($nombreActualizado || $privilegiosActualizados) ? 1 : 0;
     }
 
     public function updatePrivilegios($id_rol, $privilegios)
