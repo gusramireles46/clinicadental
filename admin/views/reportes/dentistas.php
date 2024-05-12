@@ -19,6 +19,7 @@ $content = "
         border: 1px solid #ccc;
         padding: 8px;
         text-align: left;
+        word-wrap: break-word;
     }
     th {
         background-color: #e2e2e2;
@@ -32,38 +33,42 @@ $content = "
     .container {
         text-align: center;
     }
+    a {
+        color: #000;
+        text-decoration: none;
+    }
 </style>
 <div>
     <div class='logo'>
-        <img src='../assets/logo/logo.png' style='width: 100px; height: 100px;' alt='Dentistas'> <label style='font-size: 25px;'>Clinica Dental Integral \"{$datos[0]['nombre']} {$datos[0]['apellido_paterno']} {$datos[0]['apellido_materno']}\"</label>
+        <img src='../assets/logo/logo.png' style='width: 100px; height: 100px;' alt='Dentistas'> <label style='font-size: 25px;'>Clínica Dental Integral \"José Alfredo García Oliveros\"</label>
     </div>
     <div class='container'>
     <h1>Listado de dentistas</h1>
     <table align='center'>
         <thead>
             <tr>
-                <th width=''>ID</th>
-                <th width=''>Apellidos</th>
-                <th width=''>Nombre</th>
-                <th width=''>Especialidad</th>
-                <th width=''>Correo</th>
-                <th width=''>Teléfono</th>
-                <th width=''>Dias habiles</th>
-                <th width=''>Horario</th>
+                <th>ID</th>
+                <th>Apellidos</th>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+                <th>Correo</th>
+                <th>Teléfono</th>
+                <th>Dias habiles</th>
+                <th>Horario</th>
             </tr>
         </thead>
         <tbody>";
-foreach ($datos as $dato) {
+foreach ($datos as $dentista) {
     $content .= "
             <tr>
-                <td style='background-color: #FAFAFA; font-weight: bold'>{$dato['id_dentista']}</td>
-                <td>{$dato['apellido_paterno']} {$dato['apellido_materno']}</td>
-                <td>{$dato['nombre']}</td>
-                <td>{$dato['especialidad']}</td>
-                <td>{$dato['correo']}</td>
-                <td>{$dato['telefono']}</td>
-                <td>{$dato['dias_habiles']}</td>
-                <td>{$dato['hora_inicio']} a {$dato['hora_fin']}</td>
+                <td style='background-color: #FAFAFA; font-weight: bold'>{$dentista['id_dentista']}</td>
+                <td>{$dentista['apellido_paterno']} {$dentista['apellido_materno']}</td>
+                <td>{$dentista['nombre']}</td>
+                <td>{$dentista['especialidad']}</td>
+                <td><a href='mailto:{$dentista['correo']}'>{$dentista['correo']}</a></td>
+                <td><a href='tel:{$dentista['telefono']}'>{$dentista['telefono']}</a></td>
+                <td>{$dentista['dias_habiles']}</td>
+                <td>{$dentista['hora_inicio']} a {$dentista['hora_fin']}</td>
             </tr>";
 }
 $content .= "
