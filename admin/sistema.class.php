@@ -248,4 +248,74 @@ class Sistema extends Config
         else
             return true;
     }
+
+    public function register($datos)
+    {
+        if (!$this->checkEmail($datos['correo'])) {
+            $this->alert('danger', '<i class="fa-solid fa-triangle-exclamation"></i> El correo electrónico no es válido');
+            return false;
+        }
+        $this->connect();
+        try {
+            $this->conn->beginTransaction();
+            $sql = "SELECT * FROM usuarios WHERE username = :username;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':username', $datos['correo'], PDO::PARAM_STR);
+            $stmt->execute();
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $usuario = $stmt->fetchAll();
+            if (isset($usuario[0])) {
+                $this->alert('danger', '<i class="fa-solid fa-triangle-exclamation"></i> El correo electrónico ya existe');
+                $this->conn->rollback();
+                return false;
+            }
+            $sql = "INSERT INTO usuarios (username, password) VALUES (:username, :password)";
+            $stmt = $this->conn->prepare($sql);
+            $password = $datos['password'];
+            $password = md5($password);
+            $stmt->bindParam(':username', $datos['correo'], PDO::PARAM_STR);
+            $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+            $stmt->execute();
+            $sql = "SELECT * FROM usuarios WHERE username = :username;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':username', $datos['correo'], PDO::PARAM_STR);
+            $stmt->execute();
+            $usuario = array();
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $usuario = $stmt->fetchAll();
+            if (isset($usuario[0])) {
+                $id_usuario = $usuario[0]['id_usuario'];
+                $sql = "INSERT INTO usuario_rol (id_usuario, id_rol) VALUES (:id_usuario, 3);";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+                $stmt->execute();
+                $sql = "INSERT INTO clientes (nombre, apellido_paterno, apellido_materno, telefono, id_usuario) VALUES (:nombre, :apellido_paterno, :apellido_materno, :telefono, :id_usuario);";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bindParam(':nombre', $datos['nombre'], PDO::PARAM_STR);
+                $stmt->bindParam(':apellido_paterno', $datos['apellido_paterno'], PDO::PARAM_STR);
+                $stmt->bindParam(':apellido_materno', $datos['apellido_materno'], PDO::PARAM_STR);
+                $stmt->bindParam(':telefono', $datos['telefono'], PDO::PARAM_STR);
+                $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+                $stmt->execute();
+                $sql = "SELECT * FROM clientes c JOIN usuarios u ON c.id_usuario = :id_usuario;";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+                $stmt->execute();
+                $cliente = array();
+                $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                $cliente = $stmt->fetchAll();
+                if (isset($cliente[0])) {
+                    $this->alert('success', '<i class="fa-solid fa-check"></i> Registro exitoso');
+                    $this->conn->commit();
+                    return true;
+                }
+                $this->alert('danger', '<i class="fa-solid fa-triangle-exclamation"></i> No se pudo registrar');
+                $this->conn->rollback();
+                return false;
+            }
+        } catch (PDOException $e) {
+            $this->alert('danger', '<i class="fa-solid fa-triangle-exclamation"></i> No se pudo registrar');
+            return false;
+        }
+    }
 }

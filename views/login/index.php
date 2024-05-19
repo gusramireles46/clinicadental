@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="../styles/style.css">
 <form action="login.php?action=LOGIN" method="POST">
     <section class="vh-100 background-custom">
         <div class="container py-5 h-100">

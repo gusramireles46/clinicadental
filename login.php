@@ -60,6 +60,11 @@ switch ($action) {
     case 'REGISTRO':
         include __DIR__. '/views/login/registro.php';
         break;
+    case 'SIGNUP':
+        $datos = $_POST;
+        $app->register($datos);
+        header("refresh:3;url=". basename(__FILE__));
+        break;
     default:
         include __DIR__ . '/views/login/index.php';
         break;
