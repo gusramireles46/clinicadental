@@ -1,7 +1,7 @@
 body {
     /*background-color: rgb(221, 240, 255);*/
     /*background-color: #FFFFFF;*/
-    background-color: aliceblue;
+    background: linear-gradient(to right, #C2E5FF, #FFFFFF);
 }
 
 .carousel-caption {
@@ -68,4 +68,9 @@ body {
     height: 200px;
     text-align: center;
     opacity: 0.5;
+}
+
+.img-details {
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }

@@ -1,7 +1,7 @@
 <section>
-    <div class="container" style="padding-top: 50px; padding-bottom: 50px;">
+    <div class="container py-5">
         <div class="row">
-            <h3>Servicios</h3>
+            <h2>Servicios</h2>
 
             <?php foreach ($datos as $servicio) : ?>
                 <div class="col-3">

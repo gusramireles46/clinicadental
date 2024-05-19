@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . '/sistema.class.php';
+require_once __DIR__ . '/sistema.class.php';
 
 class Dentista extends Sistema
 {

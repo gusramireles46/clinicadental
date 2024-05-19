@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . "/sistema.class.php";
+require_once __DIR__ . "/sistema.class.php";
 
 class Cliente extends Sistema
 {
@@ -55,5 +55,16 @@ class Cliente extends Sistema
         $stmt->bindParam(':id_cliente', $id_cliente, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->rowCount();
+    }
+
+    public function getByUser($id_usuario) {
+        $this->connect();
+        $stmt = $this->conn->prepare("SELECT * FROM clientes WHERE id_usuario = :id_usuario;");
+        $stmt->bindParam(':id_cliente', $id_usuario, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $datos = $stmt->fetchAll();
+        $this->count = count($datos);
+        return $datos[0];
     }
 }
