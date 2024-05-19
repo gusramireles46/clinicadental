@@ -15,7 +15,7 @@
                             <h5 class="card-subtitle mb-2 text-body-secondary text-center"><?php echo $dentista['especialidad']; ?></h5>
                         </div>
                         <div class="text-center mb-3">
-                            <a href="?action=DETALLES&id_servicio=<?php echo $dentista['id_dentista']; ?>"
+                            <a href="?action=DETALLES&id_dentista=<?php echo $dentista['id_dentista']; ?>"
                                class="btn btn-primary">Ver detalles</a>
                         </div>
                     </div>

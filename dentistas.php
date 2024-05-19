@@ -9,7 +9,7 @@ $alert = array();
 switch ($action) {
     case 'DETALLES':
         if ($datos = $web->getById($id_dentista)) {
-            print_r($datos);
+            include __DIR__ . '/views/dentistas/detalles.php';
         } else {
             $web->alert('danger', 'El dentista no ha sido encontrado');
             header("refresh:3;url=servicios.php");

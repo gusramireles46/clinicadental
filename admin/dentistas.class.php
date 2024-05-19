@@ -17,7 +17,7 @@ class Dentista extends Sistema
     public function getById($id_dentista)
     {
         $this->connect();
-        $stmt = $this->conn->prepare('SELECT * FROM dentista WHERE id_dentista = :id_dentista;');
+        $stmt = $this->conn->prepare("SELECT id_dentista, nombre, apellido_paterno, apellido_materno, telefono, dias_habiles, especialidad, TIME_FORMAT(hora_inicio, '%h:%i %p') AS f_hora_inicio, hora_inicio, TIME_FORMAT(hora_fin, '%h:%i %p') AS f_hora_fin, hora_fin, fotografia, correo FROM dentista WHERE id_dentista = :id_dentista;");
         $stmt->bindParam(':id_dentista', $id_dentista, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);

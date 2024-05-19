@@ -63,7 +63,7 @@ $datos = $web->getAll();
                             <h5 class="card-title">Servicios</h5>
                             <p class="card-text">Clasificacion de los servicios dentales por especialidad ofrecidos por
                                 la clínica dental.</p>
-                            <a href="#" class="card-link">Ver todos los servicios</a>
+                            <a href="servicios.php" class="card-link">Ver todos los servicios</a>
                         </div>
                     </div>
                 </div>
@@ -97,7 +97,6 @@ $datos = $web->getAll();
                                          class="card-img-top card-image" alt="Servicios">
                                 </div>
                                 <h5 class="card-title"><?php echo $servicio['servicio']; ?></h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary"><?php echo $servicio['descripcion']; ?></h6>
                                 <div class="text-center">
                                     <a href="servicios.php?action=DETALLES&id_servicio=<?php echo $servicio['id_servicio']; ?>"
                                        class="btn btn-primary">Ver detalles</a>
