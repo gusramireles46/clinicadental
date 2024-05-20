@@ -182,7 +182,7 @@ class Sistema extends Config
                 $cuerpo = 'Hola ' . $usuario . ',<br><br>';
                 $cuerpo .= 'Hemos recibido una solicitud de recuperación de contraseña.<br>';
                 $cuerpo .= 'Para recuperar tu contraseña, haz click en el siguiente enlace:<br>';
-                $cuerpo .= '<a href="http://localhost/dentista/admin/login.php?action=RECOVERY&token=' . $token . '">Reestablecer contraseña</a><br><br>';
+                $cuerpo .= '<a href="http://localhost/clinicadental/admin/login.php?action=RECOVERY&token=' . $token . '">Reestablecer contraseña</a><br><br>';
                 $cuerpo .= 'Si no has solicitado la recuperación de contraseña, ignora este mensaje.<br><br>';
                 $cuerpo .= 'Atentamente,<br>';
                 $cuerpo .= 'El equipo de Clinica Dental Integral';
@@ -271,14 +271,15 @@ class Sistema extends Config
             }
             $sql = "INSERT INTO usuarios (username, password) VALUES (:username, :password)";
             $stmt = $this->conn->prepare($sql);
+            $correo = $datos['correo'];
             $password = $datos['password'];
             $password = md5($password);
-            $stmt->bindParam(':username', $datos['correo'], PDO::PARAM_STR);
+            $stmt->bindParam(':username', $correo, PDO::PARAM_STR);
             $stmt->bindParam(':password', $password, PDO::PARAM_STR);
             $stmt->execute();
             $sql = "SELECT * FROM usuarios WHERE username = :username;";
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':username', $datos['correo'], PDO::PARAM_STR);
+            $stmt->bindParam(':username', $correo, PDO::PARAM_STR);
             $stmt->execute();
             $usuario = array();
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -305,7 +306,14 @@ class Sistema extends Config
                 $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
                 $cliente = $stmt->fetchAll();
                 if (isset($cliente[0])) {
+                    $nombreCliente = $cliente[0]['nombre'] . " " . $cliente[0]['apellido_paterno'] . " " . $cliente[0]['apellido_materno'];
                     $this->alert('success', '<i class="fa-solid fa-check"></i> Registro exitoso');
+                    $cuerpo = "Hola {$nombreCliente} <br>";
+                    $cuerpo.= "Gracias por registrarte en Clinica Dental Integral.<br>";
+                    $cuerpo.= "Para ingresar a tu cuenta, haz click en el siguiente enlace:<br>";
+                    $cuerpo.= "<a href='http://localhost/clinicadental/admin/login.php'>Iniciar sesión</a><br><br>";
+                    $cuerpo.= "El equipo de Clinica Dental Integral";
+                    $this->sendMail($correo, $nombreCliente, "Registro en Clinica Dental Integral", $cuerpo);
                     $this->conn->commit();
                     return true;
                 }
