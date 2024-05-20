@@ -29,7 +29,7 @@ class Reportes extends Sistema
     {
         try {
             $this->connect();
-            $stmt = $this->conn->prepare("SELECT id_servicio, nombre, descripcion, precio FROM servicio ORDER BY nombre;");
+            $stmt = $this->conn->prepare("SELECT id_servicio, servicio, descripcion, precio FROM servicios ORDER BY servicio;");
             $stmt->execute();
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $datos = $stmt->fetchAll();
@@ -39,6 +39,25 @@ class Reportes extends Sistema
             $html2pdf = new Html2Pdf('L', 'A4', 'es');
             $html2pdf->writeHTML($content);
             $html2pdf->output('servicios.pdf');
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+    public function usuarios(): void
+    {
+        try {
+            $this->connect();
+            $stmt = $this->conn->prepare("SELECT u.id_usuario, u.username, r.rol FROM usuarios u JOIN usuario_rol ur ON u.id_usuario = ur.id_usuario JOIN rol r ON ur.id_rol = r.id_rol ORDER BY 1,3;");
+            $stmt->execute();
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $datos = $stmt->fetchAll();
+            ob_start();
+            $content = ob_get_clean();
+            include __DIR__. '/views/reportes/usuarios.php';
+            $html2pdf = new Html2Pdf('L', 'A4', 'es');
+            $html2pdf->writeHTML($content);
+            $html2pdf->output('usuarios.pdf');
         } catch (Exception $ex) {
             echo $ex->getMessage();
         }

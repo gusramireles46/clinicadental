@@ -7,6 +7,9 @@ switch ($action) {
     case 'DENTISTAS':
         $app->dentistas();
         break;
+    case "USUARIOS":
+        $app->usuarios();
+        break;
     default:
         include __DIR__ . '/components/header.php';
         break;
