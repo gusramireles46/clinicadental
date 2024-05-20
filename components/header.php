@@ -28,18 +28,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="./servicios.php">Servicios</a>
                 </li>
-<!--                <li class="nav-item dropdown">-->
-<!--                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                        Atención-->
-<!--                    </a>-->
-<!--                    <ul class="dropdown-menu dropdown-menu-end">-->
-<!--                        <li><a class="dropdown-item" href="#">Action</a></li>-->
-<!--                        <li><a class="dropdown-item" href="#">Another action</a></li>-->
-<!--                        <li><a class="dropdown-item" href="#">Something else here</a></li>-->
-<!--                    </ul>-->
-<!--                </li>-->
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="./dentistas.php">Dentistas</a>
+                </li>
+                <li class="nav-item" id="login-logout">
+                    <a class="nav-link" href="<?php echo isset($_SESSION['valido']) && $_SESSION['valido'] ? 'login.php?action=LOGOUT' : 'login.php'; ?>">
+                        <?php if (isset($_SESSION['valido'])): ?>
+                            <?php echo $_SESSION['valido'] ? '<i class="fas fa-sign-out-alt"></i> Cerrar sesión' : '<i class="fas fa-sign-in-alt"></i> Iniciar sesión'; ?>
+                        <?php else: ?>
+                            <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+                        <?php endif; ?>
+                    </a>
                 </li>
             </ul>
         </div>

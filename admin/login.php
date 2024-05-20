@@ -2,6 +2,10 @@
 include __DIR__ . '/components/headerSinNavbar.php';
 include __DIR__ . '/sistema.class.php';
 $app = new Sistema();
+if (isset($_SESSION['valido'])) {
+    $app->alert("danger", "Ya hay una sesión abierta");
+    header("refresh:2;url=index.php");
+}
 $action = (isset($_GET['action'])) ? $_GET['action'] : null;
 switch ($action) {
     case 'LOGOUT':

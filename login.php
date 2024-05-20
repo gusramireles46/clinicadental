@@ -3,6 +3,10 @@ include __DIR__ . '/components/headerSinNavbar.php';
 include __DIR__ . '/admin/sistema.class.php';
 $app = new Sistema();
 $action = (isset($_GET['action'])) ? $_GET['action'] : null;
+if (isset($_SESSION['valido']) && $action != "LOGOUT") {
+    $app->alert("danger", "Ya hay una sesión abierta");
+    header("refresh:2;url=index.php");
+}
 switch ($action) {
     case 'LOGOUT':
         $app->logout();

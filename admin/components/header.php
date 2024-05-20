@@ -22,7 +22,7 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
     <div class="container-fluid">
-        <a class="navbar-brand me-auto text-wrap text-center fs-6" href="./">
+        <a class="navbar-brand me-auto text-wrap text-center fs-6" href="../">
             <img src="../assets/logo/logo.png" alt="Clinica Dental Integral" style="width: 45px; height: 45px;">
             Clinica Dental Integral "Dr. José Alfredo García Oliveros"
         </a>

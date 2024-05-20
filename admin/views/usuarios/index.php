@@ -22,7 +22,7 @@
                     <tr>
                         <td class="align-middle"><?php echo $dato['id_usuario']; ?></td>
                         <td class="align-middle"><?php echo $dato['username']; ?></td>
-                        <td class="align-middle"><?php echo $dato['rol']; ?></td>
+                        <td class="align-middle"><?php echo $app->getUserRoles($dato['id_usuario']); ?></td>
                         <td class="align-middle">
                             <div class="btn-group">
                                 <a href="usuarios.php?action=EDIT&id_usuario=<?php echo $dato['id_usuario']; ?>"

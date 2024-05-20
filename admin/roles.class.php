@@ -29,7 +29,7 @@ class Rol extends Sistema
         return $datos;
     }
 
-    public function getRolPrivilegio($rol)
+    public function getRolPrivilegio($rol): string
     {
         $this->connect();
         $stmt = $this->conn->prepare('

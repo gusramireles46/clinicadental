@@ -98,7 +98,8 @@ class Sistema extends Config
         if ($kill) {
             $this->logout();
             $this->alert('danger', '<i class="fa-solid fa-triangle-exclamation"></i> Permiso denegado');
-            die();
+            header("refresh:2; url=../");
+            exit;
         }
         return false;
     }
@@ -115,7 +116,8 @@ class Sistema extends Config
         if ($kill) {
             $this->logout();
             $this->alert('danger', '<i class="fa-solid fa-triangle-exclamation"></i> Permiso denegado');
-            die();
+            header("refresh:2; url=../");
+            exit;
         }
         return false;
     }
@@ -309,10 +311,10 @@ class Sistema extends Config
                     $nombreCliente = $cliente[0]['nombre'] . " " . $cliente[0]['apellido_paterno'] . " " . $cliente[0]['apellido_materno'];
                     $this->alert('success', '<i class="fa-solid fa-check"></i> Registro exitoso');
                     $cuerpo = "Hola {$nombreCliente} <br>";
-                    $cuerpo.= "Gracias por registrarte en Clinica Dental Integral.<br>";
-                    $cuerpo.= "Para ingresar a tu cuenta, haz click en el siguiente enlace:<br>";
-                    $cuerpo.= "<a href='http://localhost/clinicadental/admin/login.php'>Iniciar sesión</a><br><br>";
-                    $cuerpo.= "El equipo de Clinica Dental Integral";
+                    $cuerpo .= "Gracias por registrarte en Clinica Dental Integral.<br>";
+                    $cuerpo .= "Para ingresar a tu cuenta, haz click en el siguiente enlace:<br>";
+                    $cuerpo .= "<a href='http://localhost/clinicadental/admin/login.php'>Iniciar sesión</a><br><br>";
+                    $cuerpo .= "El equipo de Clinica Dental Integral";
                     $this->sendMail($correo, $nombreCliente, "Registro en Clinica Dental Integral", $cuerpo);
                     $this->conn->commit();
                     return true;
