@@ -4,7 +4,7 @@
             <h2>Servicios</h2>
 
             <?php foreach ($datos as $servicio) : ?>
-                <div class="col-3">
+                <div class="col-lg-3 col-md-12 mb-4">
                     <div class="card">
                         <div class="card-body">
                             <div style="text-align: center;">
