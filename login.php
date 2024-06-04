@@ -8,7 +8,7 @@ if (isset($_SESSION['valido']) && $action != "LOGOUT") {
     header("refresh:2;url=index.php");
 }
 switch ($action) {
-    case 'LOGOUT':
+    case "LOGOUT":
         $app->logout();
         $app->alert('success', '<i class="fa fa-check"></i> Has cerrado sesión correctamente');
         header("refresh:3;url=" . basename(__FILE__));

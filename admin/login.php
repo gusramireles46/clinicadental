@@ -2,16 +2,16 @@
 include __DIR__ . '/components/headerSinNavbar.php';
 include __DIR__ . '/sistema.class.php';
 $app = new Sistema();
-if (isset($_SESSION['valido'])) {
+$action = (isset($_GET['action'])) ? $_GET['action'] : null;
+if (isset($_SESSION['valido']) && $action != "LOGOUT") {
     $app->alert("danger", "Ya hay una sesión abierta");
     header("refresh:2;url=index.php");
 }
-$action = (isset($_GET['action'])) ? $_GET['action'] : null;
 switch ($action) {
     case 'LOGOUT':
         $app->logout();
         $app->alert('success', '<i class="fa fa-check"></i> Has cerrado sesión correctamente');
-        header("refresh:3;url=" . basename(__FILE__));
+        header("refresh:3;url=../index.php");
         break;
     case 'LOGIN':
         $username = $_POST['username'];

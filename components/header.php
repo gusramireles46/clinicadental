@@ -25,11 +25,19 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="./">Inicio</a>
                 </li>
+                <?php if (isset($_SESSION['valido']) && $_SESSION['roles'][0] == "Administrador") : ?>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="./admin/">Panel del administrador</a>
+                </li>
+                <?php endif; ?>
                 <li class="nav-item">
                     <a class="nav-link" href="./servicios.php">Servicios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="./dentistas.php">Dentistas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="./productos.php">Productos</a>
                 </li>
                 <li class="nav-item" id="login-logout">
                     <a class="nav-link" href="<?php echo isset($_SESSION['valido']) && $_SESSION['valido'] ? 'login.php?action=LOGOUT' : 'login.php'; ?>">
