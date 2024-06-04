@@ -11,7 +11,8 @@ class Config
 {
     function getImageSize()
     {
-        return 1024000;
+        $size = 2;
+        return $size * 1024 * 1024;
     }
 
     function getImageType()
