@@ -50,7 +50,8 @@ class Producto extends Sistema
         return false;
     }
 
-    public function update($id_producto, $datos) {
+    public function update($id_producto, $datos)
+    {
         $this->connect();
         $prefijo = $datos['producto'];
         $filename = $this->upload("productos", $prefijo);
@@ -70,7 +71,8 @@ class Producto extends Sistema
         return false;
     }
 
-    public function delete($id_producto) {
+    public function delete($id_producto)
+    {
         $this->connect();
         $stmt = $this->conn->prepare('DELETE FROM productos WHERE id_producto = :id_producto;');
         $stmt->bindParam(':id_producto', $id_producto, PDO::PARAM_INT);
@@ -90,5 +92,31 @@ class Producto extends Sistema
             return false;
         }
         return true;
+    }
+
+    public function productsFromApi()
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'http://localhost/clinicadental/API/productos.api.php',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => array(
+                'Cookie: PHPSESSID=5uqeshl63h6d65dlocd586tbc2'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+//        echo $response;
+        $datos = json_decode($response);
+        return $datos;
     }
 }

@@ -8,6 +8,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpmailer/phpmailer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/gif" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/image" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/respect/stringifier" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/respect/validation" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-mbstring" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

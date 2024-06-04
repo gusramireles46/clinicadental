@@ -84,8 +84,15 @@ class Sistema extends Config
 
     public function logout()
     {
-        unset($_SESSION);
-        session_destroy();
+        if (!isset($_SESSION['cart'])) {
+            unset($_SESSION);
+            session_destroy();
+        } else {
+            unset($_SESSION['valido']);
+            unset($_SESSION['correo']);
+            unset($_SESSION['roles']);
+            unset($_SESSION['privilegios']);
+        }
     }
 
     public function checkRol($rol, $kill = false)
@@ -233,7 +240,7 @@ class Sistema extends Config
         return filter_var($username, FILTER_VALIDATE_EMAIL);
     }
 
-    private function sendMail($destinatario, $username, $asunto, $mensaje)
+    public function sendMail($destinatario, $username, $asunto, $mensaje)
     {
         require dirname(__DIR__) . '/vendor/autoload.php';
         $mail = new PHPMailer();

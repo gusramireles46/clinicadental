@@ -18,6 +18,9 @@
       <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
       <path value="$PROJECT_DIR$/vendor/intervention/gif" />
       <path value="$PROJECT_DIR$/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/vendor/respect/stringifier" />
+      <path value="$PROJECT_DIR$/vendor/respect/validation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.3" />
