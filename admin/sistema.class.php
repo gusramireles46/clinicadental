@@ -249,9 +249,9 @@ class Sistema extends Config
         $mail->Port = 465;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->SMTPAuth = true;
-        $mail->Username = '21030017@itcelaya.edu.mx';
-        $mail->Password = 'zhpnrgjwjfsjzmip';
-        $mail->setFrom('21030017@itcelaya.edu.mx', 'GUSTAVO RAMIREZ MIRELES');
+        $mail->Username = 'email@example.com';
+        $mail->Password = 'example_password';
+        $mail->setFrom('email@example.com', 'NOMBRE DEL REMITENTE');
         $mail->addAddress($destinatario, $username);
         $mail->Subject = $asunto;
         $mail->CharSet = PHPMailer::CHARSET_UTF8;
